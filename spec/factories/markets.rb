@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :market do
-    name { Faker::Commerce.vendor }
-    street { Faker::Adress.street_address }
+    name { Faker::Company.name }
+    street { Faker::Address.street_address }
     city { Faker::Address.city }
-    county { Faker::Adress.county }
-    state { Faker::Adress.state }
-    zip { Faker::Adress.zip }
-    lat { Faker::Adress.latitude }
-    lon { Faker::Adress.longitude }
+    county { Faker::Address.county }
+    state { Faker::Address.state }
+    zip { Faker::Address.zip }
+    lat { Faker::Address.latitude }
+    lon { Faker::Address.longitude }
   end
 end
