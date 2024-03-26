@@ -7,7 +7,7 @@ describe "Markets Endpoints" do
     @market_3 = create(:market)
     @market_4 = create(:market)
     @market_5 = create(:market)
-      
+
     @vendor_1 = create(:vendor)
     @vendor_2 = create(:vendor)
     @vendor_3 = create(:vendor)
@@ -33,8 +33,8 @@ describe "Markets Endpoints" do
       expect(markets).to be_an(Array)
 
       markets.each do |market|
-        expect(market[:attributes]).to have_key(:id)
-        expect(market[:attributes][:id]).to be_an(Integer)
+        # expect(market[:attributes]).to have_key(:id)
+        expect(market[:id]).to be_a(String)
 
         expect(market[:attributes]).to have_key(:name)
         expect(market[:attributes][:name]).to be_a(String)
@@ -50,13 +50,13 @@ describe "Markets Endpoints" do
 
         expect(market[:attributes]).to have_key(:state)
         expect(market[:attributes][:state]).to be_a(String)
-        
+
         expect(market[:attributes]).to have_key(:zip)
         expect(market[:attributes][:zip]).to be_a(String)
 
         expect(market[:attributes]).to have_key(:lat)
         expect(market[:attributes][:lat]).to be_a(String)
-        
+
         expect(market[:attributes]).to have_key(:lon)
         expect(market[:attributes][:lon]).to be_a(String)
 
@@ -74,8 +74,8 @@ describe "Markets Endpoints" do
 
       market = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      expect(market[:attributes]).to have_key(:id)
-      expect(market[:attributes][:id]).to eq(@market_1.id)
+      # expect(market[:attributes]).to have_key(:id)
+      expect(market[:id]).to eq(@market_1.id.to_s)
 
       expect(market[:attributes]).to have_key(:name)
       expect(market[:attributes][:name]).to eq(@market_1.name)
@@ -91,13 +91,13 @@ describe "Markets Endpoints" do
 
       expect(market[:attributes]).to have_key(:state)
       expect(market[:attributes][:state]).to eq(@market_1.state)
-      
+
       expect(market[:attributes]).to have_key(:zip)
       expect(market[:attributes][:zip]).to eq(@market_1.zip)
 
       expect(market[:attributes]).to have_key(:lat)
       expect(market[:attributes][:lat]).to eq(@market_1.lat)
-      
+
       expect(market[:attributes]).to have_key(:lon)
       expect(market[:attributes][:lon]).to eq(@market_1.lon)
 

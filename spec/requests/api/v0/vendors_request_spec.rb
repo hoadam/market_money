@@ -47,6 +47,19 @@ describe "Vendors API" do
       expect(created_vendor.contact_phone).to eq(vendor_params[:contact_phone])
       expect(created_vendor.credit_accepted).to eq(vendor_params[:credit_accepted])
     end
+
+    it "updates the vendor with valid attributes" do
+      id = create(:vendor).id
+      previous_name = Vendor.last.name
+      vendor_params = { name: "ABC foods"}
+      headers = {"CONTENT_TYPE" => "application/json"}
+      patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate({vendor: vendor_params})
+      vendor = Vendor.find_by(id: id)
+
+      expect(response).to be_successful
+      expect(vendor.name).to_not eq(previous_name)
+      expect(vendor.name).to eq("ABC foods")
+    end
   end
 
   describe 'sad paths' do
@@ -63,7 +76,7 @@ describe "Vendors API" do
       expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
 
-    it "returns an error message if missing attributes" do
+    it "returns an error if missing attributes when create a new vendor" do
       vendor_params = ({
                         name: "Tony's Pizza",
                         description: "This vendor offers frozen pizza",
@@ -78,9 +91,36 @@ describe "Vendors API" do
       expect(response.code).to eq("400")
 
       data = JSON.parse(response.body, symbolize_names: true)
+      # binding.pry
+      expect(data[:errors]).to be_a(Array)
+      expect(data[:errors]).to eq(["Contact name can't be blank", "Contact phone can't be blank"])
+    end
+
+    it "returns an error if the attribute is not valid when edit the vendor's information" do
+      id = create(:vendor).id
+      previous_name = Vendor.last.name
+      vendor_params = { contact_name: "",
+                        contact_phone: ""
+                      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+      patch "/api/v0/vendors/#{id}", headers: headers, params: JSON.generate({vendor: vendor_params})
+
+      data = JSON.parse(response.body, symbolize_names: true)
 
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors]).to eq(["Contact name can't be blank", "Contact phone can't be blank"])
+    end
+
+    it "returns an error if the id is invalid when edit a vendor's information" do
+      patch "/api/v0/vendors/123123123123"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
   end
 end
