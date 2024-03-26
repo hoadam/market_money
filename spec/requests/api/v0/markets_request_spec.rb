@@ -33,7 +33,7 @@ describe "Markets Endpoints" do
       expect(markets).to be_an(Array)
 
       markets.each do |market|
-        # expect(market[:attributes]).to have_key(:id)
+        expect(market).to have_key(:id)
         expect(market[:id]).to be_a(String)
 
         expect(market[:attributes]).to have_key(:name)
@@ -74,7 +74,7 @@ describe "Markets Endpoints" do
 
       market = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      # expect(market[:attributes]).to have_key(:id)
+      expect(market).to have_key(:id)
       expect(market[:id]).to eq(@market_1.id.to_s)
 
       expect(market[:attributes]).to have_key(:name)
