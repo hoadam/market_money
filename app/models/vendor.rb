@@ -6,5 +6,9 @@ class Vendor < ApplicationRecord
                         :description,
                         :contact_name,
                         :contact_phone
-  validates :credit_accepted, inclusion: { in: [true, false] }
+  validate :credit_accepted_presence
+
+  def credit_accepted_presence
+    errors.add(:credit_accepted, "can't be nil")if credit_accepted.nil?
+  end
 end
