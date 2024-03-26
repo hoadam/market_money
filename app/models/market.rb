@@ -14,8 +14,4 @@ class Market < ApplicationRecord
   def vendor_count
     vendors.count
   end
-
-  def as_json(options = {})
-    super(options.merge(methods: :vendor_count))
-  end
 end
