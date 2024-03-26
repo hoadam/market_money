@@ -208,6 +208,7 @@ GEM
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
     shoulda-matchers (6.2.0)
+
       activesupport (>= 5.2.0)
     simplecov (0.22.0)
       docile (~> 1.1)
