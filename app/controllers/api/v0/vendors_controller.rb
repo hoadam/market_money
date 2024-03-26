@@ -14,6 +14,16 @@ class Api::V0::VendorsController < ApplicationController
     end
   end
 
+  def update
+    vendor = Vendor.find(params[:id])
+
+    if vendor.update(vendor_params)
+      render json: VendorSerializer.new(vendor)
+    else
+      render json: { errors: vendor.errors.full_messages }, status: 400
+    end
+  end
+
   private
 
   def not_found_response(exception)
