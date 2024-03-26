@@ -60,6 +60,18 @@ describe "Vendors API" do
       expect(vendor.name).to_not eq(previous_name)
       expect(vendor.name).to eq("ABC foods")
     end
+
+    it "deletes the vendor when a valid id is passed in" do
+      vendor = create(:vendor)
+
+      expect(Vendor.count).to eq(1)
+
+      delete "/api/v0/vendors/#{vendor.id}"
+
+      expect(response).to be_successful
+      expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(Vendor.count).to eq(0)
+    end
   end
 
   describe 'sad paths' do
@@ -113,6 +125,18 @@ describe "Vendors API" do
 
     it "returns an error if the id is invalid when edit a vendor's information" do
       patch "/api/v0/vendors/123123123123"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=123123123123")
+    end
+
+    it "returns an error if the id is invalid when delete a vendor" do
+      delete "/api/v0/vendors/123123123123"
 
       expect(response).to_not be_successful
       expect(response.status).to eq(404)

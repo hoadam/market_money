@@ -24,6 +24,13 @@ class Api::V0::VendorsController < ApplicationController
     end
   end
 
+  def destroy
+    vendor = Vendor.find(params[:id])
+    vendor.destroy
+
+    render json: VendorSerializer.new(vendor)
+  end
+
   private
 
   def not_found_response(exception)
