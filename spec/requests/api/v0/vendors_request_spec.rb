@@ -60,6 +60,48 @@ describe "Vendors API" do
       expect(vendor.name).to_not eq(previous_name)
       expect(vendor.name).to eq("ABC foods")
     end
+
+    it "can get collection of a given market’s vendors. Each vendor contains all of it’s attributes." do
+      @market_1 = create(:market)
+      @market_2 = create(:market)
+      @market_3 = create(:market)
+      @market_4 = create(:market)
+      @vendor_1 = create(:vendor)
+      @vendor_2 = create(:vendor)
+      @vendor_3 = create(:vendor)
+      @vendor_4 = create(:vendor)
+      @vm_1_1 = @market_1.market_vendors.create(vendor: @vendor_1)
+      @vm_1_2 = @market_1.market_vendors.create(vendor: @vendor_2)
+      @vm_1_3 = @market_1.market_vendors.create(vendor: @vendor_3)
+      @vm_1_4 = @market_1.market_vendors.create(vendor: @vendor_4)
+
+      get "/api/v0/markets/#{@market_1.id}/vendors"
+
+      expect(response).to be_successful
+
+      market_vendors = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(market_vendors.count).to eq(4)
+      expect(market_vendors).to be_an(Array)
+
+      market_vendors.each do |vendor|
+        expect(vendor[:id]).to be_a(String)
+
+        expect(vendor[:attributes]).to have_key(:name)
+        expect(vendor[:attributes][:name]).to be_a(String)
+
+        expect(vendor[:attributes]).to have_key(:description)
+        expect(vendor[:attributes][:description]).to be_a(String)
+
+        expect(vendor[:attributes]).to have_key(:contact_name)
+        expect(vendor[:attributes][:contact_name]).to be_a(String)
+
+        expect(vendor[:attributes]).to have_key(:contact_phone)
+        expect(vendor[:attributes][:contact_phone]).to be_a(String)
+
+        expect(vendor[:attributes]).to have_key(:credit_accepted)
+      end
+    end
   end
 
   describe 'sad paths' do
@@ -121,6 +163,19 @@ describe "Vendors API" do
 
       expect(data[:errors].first[:status]).to eq("404")
       expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=123123123123")
+    end
+
+    it "responds with 404 status and descriptive error message when market id passed in is invalid" do
+      get "/api/v0/markets/4445482252529652/vendors"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors]).to be_an(Array)
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=4445482252529652")
     end
   end
 end
