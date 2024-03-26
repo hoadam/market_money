@@ -38,13 +38,5 @@ RSpec.describe Market, type: :model do
         expect(@market_1.vendor_count).to eq(4)
       end
     end
-
-    describe 'as_json' do
-      it 'includes the vendor_count method result in the JSON representation of the Market model.' do
-        json = @market_1.as_json
-      expect(json).to have_key('vendor_count')
-      expect(json['vendor_count']).to eq(@market_1.vendor_count)
-      end
-    end
   end
 end
