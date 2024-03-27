@@ -119,4 +119,33 @@ describe "Markets Endpoints" do
       expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=4445482252529652")
     end
   end
+
+  describe "Market Search" do
+    before do
+      @market_1 = Market.create!(name: "Farmers Market", street: "1 Main Street", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.7955", lon: "122.3933")
+      @market_2 = Market.create!(name: "Craft Market", street: "1 Broadway Avenue", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.8021", lon: "122.4487")
+    end
+
+    it "returns markets matching the search criteria" do
+      get "/api/v0/markets/search?state=California"
+
+      expect(response).to be_successful
+
+      markets = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(markets.count).to eq(2)
+      expect(markets).to be_an(Array)
+    end
+    # sad path
+    it "responds with 422 status and descriptive error message when the search parameter passed in is invalid" do
+      get "/api/v0/markets/search?city=San Francisco"
+
+      expect(response).to_not be_successful
+      expect(response.status).to eq(422)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data[:errors].first[:detail]).to eq("Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint.")
+    end
+  end
 end
