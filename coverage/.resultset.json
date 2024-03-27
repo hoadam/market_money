@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hoadam/3module/pair_project/market_money/spec/models/market_spec.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/models/market_spec.rb": {
         "lines": [
           1,
           null,
@@ -47,7 +47,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/rails_helper.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/rails_helper.rb": {
         "lines": [
           null,
           null,
@@ -125,7 +125,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/environment.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -134,7 +134,7 @@
           1
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/application.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/application.rb": {
         "lines": [
           1,
           null,
@@ -182,7 +182,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/boot.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -190,7 +190,7 @@
           1
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/environments/test.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -258,7 +258,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/initializers/cors.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/initializers/cors.rb": {
         "lines": [
           null,
           null,
@@ -278,7 +278,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/initializers/filter_parameter_logging.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -290,7 +290,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/initializers/inflections.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -310,36 +310,36 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/factories/markets.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/factories/markets.rb": {
         "lines": [
           1,
           1,
-          17,
-          17,
-          17,
-          17,
-          17,
-          17,
-          17,
-          17,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
+          21,
           null,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/factories/vendors.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/factories/vendors.rb": {
         "lines": [
           1,
           1,
-          25,
-          25,
-          25,
-          25,
-          25,
+          28,
+          28,
+          28,
+          28,
+          28,
           null,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/config/routes.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/config/routes.rb": {
         "lines": [
           1,
           null,
@@ -356,11 +356,13 @@
           1,
           1,
           null,
+          1,
+          null,
           null,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/models/market.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/models/market.rb": {
         "lines": [
           1,
           1,
@@ -381,34 +383,14 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/models/application_record.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/models/market_vendor_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null
-        ]
-      },
-      "/Users/hoadam/3module/pair_project/market_money/app/models/market_vendor.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/hoadam/3module/pair_project/market_money/spec/models/vendor_spec.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/models/market_vendor_spec.rb": {
         "lines": [
           1,
           null,
@@ -416,6 +398,26 @@
           1,
           2,
           2,
+          null,
+          null
+        ]
+      },
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/models/market_vendor.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/models/vendor_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
           2,
           2,
           1,
@@ -435,7 +437,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/models/vendor.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/models/vendor.rb": {
         "lines": [
           1,
           1,
@@ -448,12 +450,12 @@
           1,
           null,
           1,
-          38,
+          41,
           null,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/requests/api/v0/markets_request_spec.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/requests/api/v0/markets_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -490,7 +492,7 @@
           1,
           null,
           1,
-          null,
+          5,
           5,
           null,
           5,
@@ -531,7 +533,7 @@
           null,
           1,
           null,
-          null,
+          1,
           1,
           null,
           1,
@@ -579,7 +581,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/spec/requests/api/v0/vendors_request_spec.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/spec/requests/api/v0/vendors_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -650,100 +652,119 @@
           1,
           null,
           1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          4,
+          null,
+          4,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/controllers/api/v0/markets_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
           null,
           1,
           2,
-          1,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/hoadam/3module/pair_project/market_money/app/controllers/api/v0/markets_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          2,
           null,
           null,
           1,
@@ -754,13 +775,13 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/controllers/application_controller.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/serializers/market_serializer.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/serializers/market_serializer.rb": {
         "lines": [
           1,
           1,
@@ -775,39 +796,10 @@
           null,
           null,
           1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/serializers/vendor_serializer.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/serializers/vendor_serializer.rb": {
         "lines": [
           1,
           1,
@@ -819,7 +811,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/serializers/error_serializer.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/serializers/error_serializer.rb": {
         "lines": [
           1,
           1,
@@ -839,7 +831,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/poros/error_message.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/poros/error_message.rb": {
         "lines": [
           1,
           1,
@@ -851,7 +843,7 @@
           null
         ]
       },
-      "/Users/hoadam/3module/pair_project/market_money/app/controllers/api/v0/vendors_controller.rb": {
+      "/Users/lauravegavargas/turing_work/3mod/projects/market_money/app/controllers/api/v0/vendors_controller.rb": {
         "lines": [
           1,
           1,
@@ -881,9 +873,12 @@
           null,
           1,
           2,
-          1,
           null,
           1,
+          1,
+          null,
+          0,
+          null,
           null,
           null,
           1,
@@ -900,6 +895,6 @@
         ]
       }
     },
-    "timestamp": 1711492005
+    "timestamp": 1711495893
   }
 }

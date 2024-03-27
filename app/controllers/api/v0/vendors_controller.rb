@@ -24,6 +24,15 @@ class Api::V0::VendorsController < ApplicationController
     end
   end
 
+  def index
+    market = Market.find(params[:market_id])
+
+    if market != nil
+      render json: VendorSerializer.new(market.vendors)
+    else
+      render json: { errors: market.errors.full_messages }, status: 400
+    end
+
   def destroy
     vendor = Vendor.find(params[:id])
     vendor.destroy
