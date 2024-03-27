@@ -101,6 +101,17 @@ describe "Vendors API" do
 
         expect(vendor[:attributes]).to have_key(:credit_accepted)
       end
+
+    it "deletes the vendor when a valid id is passed in" do
+      vendor = create(:vendor)
+
+      expect(Vendor.count).to eq(1)
+
+      delete "/api/v0/vendors/#{vendor.id}"
+
+      expect(response).to be_successful
+      expect{Vendor.find(vendor.id)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect(Vendor.count).to eq(0)
     end
   end
 
@@ -167,15 +178,26 @@ describe "Vendors API" do
 
     it "responds with 404 status and descriptive error message when market id passed in is invalid" do
       get "/api/v0/markets/4445482252529652/vendors"
+      
+      expect(response).to_not be_successful
+      expect(response.status).to eq(404)
+      
+      data = JSON.parse(response.body, symbolize_names: true)
+      
+      expect(data[:errors].first[:status]).to eq("404")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=4445482252529652")
+    end
+    
+    it "returns an error if the id is invalid when delete a vendor" do
+      delete "/api/v0/vendors/123123123123"
 
       expect(response).to_not be_successful
       expect(response.status).to eq(404)
 
       data = JSON.parse(response.body, symbolize_names: true)
 
-      expect(data[:errors]).to be_an(Array)
       expect(data[:errors].first[:status]).to eq("404")
-      expect(data[:errors].first[:title]).to eq("Couldn't find Market with 'id'=4445482252529652")
+      expect(data[:errors].first[:title]).to eq("Couldn't find Vendor with 'id'=123123123123")
     end
   end
 end

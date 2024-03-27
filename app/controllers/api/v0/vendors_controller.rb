@@ -32,6 +32,12 @@ class Api::V0::VendorsController < ApplicationController
     else
       render json: { errors: market.errors.full_messages }, status: 400
     end
+
+  def destroy
+    vendor = Vendor.find(params[:id])
+    vendor.destroy
+
+    render json: VendorSerializer.new(vendor)
   end
 
   private
