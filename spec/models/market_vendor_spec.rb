@@ -15,7 +15,7 @@ RSpec.describe MarketVendor, type: :model do
 
   describe 'instance_variables' do
     describe 'valid_assoc' do
-      it 'is false when market vendor already exists' do
+      it 'creates error when market vendor already exists' do
 
         @existing_association = MarketVendor.create(market: @market_1,vendor: @vendor_1)
       
