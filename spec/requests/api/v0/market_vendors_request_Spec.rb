@@ -45,7 +45,7 @@ describe "Market Vendors Endpoints" do
 
       expect(response).not_to be_successful
       expect(response.status).to eq(400)
-      expect(JSON.parse(response.body)['errors']).to eq("Both market_id and vendor_id are required")
+      expect(JSON.parse(response.body)['errors'].first['detail']).to eq("Both market_id and vendor_id are required")
     end
 
     it "sends a 422 status response and detailed message when a market vendor association for the passed params already exists" do
@@ -55,7 +55,7 @@ describe "Market Vendors Endpoints" do
 
       expect(response).not_to be_successful
       expect(response.status).to eq(422)
-      expect(JSON.parse(response.body)['errors']).to include("Validation failed: Market vendor asociation between market with market_id=#{@market_1.id} and vendor_id=#{@vendor_1.id} already exists")
+      expect(JSON.parse(response.body)['errors'].first['detail']).to include("Validation failed: Market vendor asociation between market with market_id=#{@market_1.id} and vendor_id=#{@vendor_1.id} already exists")
     end
   end
 
@@ -81,7 +81,7 @@ describe "Market Vendors Endpoints" do
 
       expect(response).not_to be_successful
       expect(response.status).to eq(404)
-      expect(JSON.parse(response.body)['errors']).to eq("No MarketVendor with market_id=4233 AND vendor_id=11520 exists")
+      expect(JSON.parse(response.body)['errors'].first['detail']).to eq("No MarketVendor with market_id=4233 AND vendor_id=11520 exists")
     end
   end
 end
