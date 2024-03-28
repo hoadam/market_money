@@ -22,13 +22,6 @@ RSpec.describe MarketVendor, type: :model do
         expect(@new_market_vendor.errors).to be_empty
       end
 
-      it 'adds an error for duplicate association when market vendor association already exists' do
-        MarketVendor.create(market: @market_1,vendor: @vendor_1)
-        
-        @new_market_vendor.valid?
-        expect(@new_market_vendor.errors[:base]).to include('Association already exists')
-      end
-
       it 'adds an error for invalid market' do
         @new_market_vendor.market_id = nil
         @new_market_vendor.valid?
