@@ -13,7 +13,6 @@ class Api::V0::MarketsController < ApplicationController
     search_service = MarketSearchService.new(params)
     if search_service.valid?
       render json: MarketSerializer.new(search_service.search)
-
     else
       render json: { errors: [{ detail: "Invalid set of parameters. Please provide a valid set of parameters to perform a search with this endpoint."}  ] }, status: 422
     end
