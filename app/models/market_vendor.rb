@@ -10,7 +10,8 @@ class MarketVendor < ApplicationRecord
 
     if market_id.present? && vendor_id.present?
       existing_association = MarketVendor.find_by(vendor_id: vendor_id, market_id: market_id)
-      errors.add(:base, 'Association already exists') if existing_association
+      
+      errors.add(:base, "Validation failed: Market vendor asociation between market with market_id=#{market_id} and vendor_id=#{vendor_id} already exists") if existing_association
     end
   end
 end
