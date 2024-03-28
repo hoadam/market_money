@@ -8,7 +8,7 @@ class Api::V0::VendorsController < ApplicationController
   def create
     vendor = Vendor.new(vendor_params)
     if vendor.save
-      render json: VendorSerializer.new(vendor)
+      render json: VendorSerializer.new(vendor), status: 201
     else
       render json: { errors: vendor.errors.full_messages }, status: 400
     end
@@ -38,7 +38,7 @@ class Api::V0::VendorsController < ApplicationController
     vendor = Vendor.find(params[:id])
     vendor.destroy
 
-    render json: VendorSerializer.new(vendor)
+    render json: VendorSerializer.new(vendor),status: 204
   end
 
   private
