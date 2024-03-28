@@ -39,14 +39,50 @@ RSpec.describe MarketSearchService do
   end
 
   describe "#search" do
-    it "returns markets matching the search parameters" do
-      market_1 = Market.create!(name: "Farmers Market", street: "1 Main Street", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.7955", lon: "122.3933")
-      market_2 = Market.create!(name: "Craft Market", street: "1 Broadway Avenue", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.8021", lon: "122.4487")
+    let!(:market_1) { Market.create!(name: "Farmers Market", street: "1 Main Street", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.7955", lon: "122.3933") }
+    let!(:market_2) { Market.create!(name: "Craft Market", street: "1 Broadway Avenue", city: "San Francisco", county: "San Francisco", state: "California", zip: "94102", lat: "37.8021", lon: "122.4487") }
+    let(:market_search) { MarketSearchService.new(query) }
 
-      market_search = MarketSearchService.new(state: "California")
+    context "with state" do
+      let(:query) { {state: "California"} }
+      it "returns markets matching the search state parameter" do
+        expect(market_search.search).to eq([market_1, market_2])
+      end
+    end
 
-      expect(market_search.search).to eq([market_1, market_2])
+    context "with name" do
+      let(:query) { {name: "Craft"} }
+      it "returns markets matching the search name parameter" do
+        expect(market_search.search).to eq([market_2])
+      end
+    end
+
+    context "with state and city" do
+      let(:query) { {state: "California", city: "San Francisco"} }
+      it "returns markets matching the search parameters" do
+        expect(market_search.search).to eq([market_1, market_2])
+      end
+    end
+
+    context "with state and name" do
+      let(:query) { {state: "California", name: "Market"} }
+      it "returns markets matching the search parameters" do
+        expect(market_search.search).to eq([market_1, market_2])
+      end
+    end
+
+    context "with state, city and name" do
+      let(:query) { {state: "California", city: "San Francisco", name: "Farmers"} }
+      it "returns markets matching the search parameters" do
+        expect(market_search.search).to eq([market_1])
+      end
+    end
+
+    context "with name and city that are not valid" do
+      let(:query) { {state: "Colorado", city: "San Francisco"} }
+      it "returns markets matching the search parameters" do
+        expect(market_search.search).to eq([])
+      end
     end
   end
-
 end
