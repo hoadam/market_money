@@ -17,19 +17,6 @@ class MarketSearchService
   end
 
   def search
-    # search_filter =
-    #   if (state_present && city_present && name_present)
-    #     { state: search_params[:state], city: search_params[:city], name: search_params[:name]  }
-    #   elsif (state_present && name_present)
-    #     { state: search_params[:state], name: search_params[:name]  }
-    #   elsif (state_present && city_present)
-    #     { state: search_params[:state], city: search_params[:city]  }
-    #   elsif state_present
-    #     { state: search_params[:state]  }
-    #   elsif name_present
-    #     { name: search_params[:name]  }
-    #   end
-
       query = Market
       query = query.where(state: search_params[:state]) if state_present
       query = query.where(city: search_params[:city]) if city_present
