@@ -145,7 +145,7 @@ describe "Vendors API" do
       expect(response.code).to eq("400")
 
       data = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
+      # .pry
       expect(data[:errors]).to be_a(Array)
       expect(data[:errors]).to eq(["Contact name can't be blank", "Contact phone can't be blank"])
     end
