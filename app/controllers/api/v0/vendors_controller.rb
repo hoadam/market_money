@@ -29,8 +29,8 @@ class Api::V0::VendorsController < ApplicationController
 
     if market != nil
       render json: VendorSerializer.new(market.vendors)
-    else
-      render json: { errors: market.errors.full_messages }, status: 400
+    # else
+    #   render json: { errors: market.errors.full_messages }, status: 400
     end
   end
 
