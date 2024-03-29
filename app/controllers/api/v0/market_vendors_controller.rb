@@ -6,7 +6,7 @@ class Api::V0::MarketVendorsController < ApplicationController
     vendor = Vendor.find(params[:vendor_id])
     market = Market.find(params[:market_id])
 
-    market_vendor = MarketVendor.new(vendor_id: vendor.id, market_id: market.id) 
+    market_vendor = MarketVendor.new(vendor_id: vendor.id, market_id: market.id)
 
     if market_vendor.save
       render_success('Vendor added to Market', 201)
@@ -18,11 +18,9 @@ class Api::V0::MarketVendorsController < ApplicationController
   def destroy
     market_vendor = MarketVendor.find_by(vendor_id: params[:vendor_id], market_id: params[:market_id])
 
-    if market_vendor
+     if market_vendor
       if market_vendor.destroy
         render_success('', 204)
-      else
-        render_error('Failed to destroy MarketVendor', 500)
       end
     else
       render_error("No MarketVendor with market_id=#{params[:market_id]} AND vendor_id=#{params[:vendor_id]} exists", 404)
