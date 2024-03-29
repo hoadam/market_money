@@ -1,57 +1,46 @@
 class Api::V0::MarketVendorsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
+  before_action :validate_parameters
+
   def create
-    market_id = params[:market_id]
-    vendor_id = params[:vendor_id]
+    vendor = Vendor.find(params[:vendor_id])
+    market = Market.find(params[:market_id])
 
-    unless market_id.present? && vendor_id.present?
-      render_error('Both market_id and vendor_id are required', 400)
-      return
-    end
-
-    begin
-      vendor = Vendor.find(params[:vendor_id])
-      market = Market.find(params[:market_id])
-    rescue ActiveRecord::RecordNotFound => exception
-      render_error('Vendor or Market not found', 404)
-      return
-    end
-
-    market_vendor = MarketVendor.new(vendor_id: vendor_id.to_i, market_id: market_id.to_i) 
+    market_vendor = MarketVendor.new(vendor_id: vendor.id, market_id: market.id) 
 
     if market_vendor.save
       render_success('Vendor added to Market', 201)
     else
-      render_error("Validation failed: Market vendor asociation between market with market_id=#{market_id} and vendor_id=#{vendor_id} already exists", 422)
-      return
+      render_error("Validation failed: Market vendor asociation between market with market_id=#{market.id} and vendor_id=#{vendor.id} already exists", 422)
     end
   end
 
   def destroy
-    market_id = params[:market_id].to_i
-    vendor_id = params[:vendor_id].to_i
-    
-    unless vendor_id.present? && market_id.present?
-      render_error('Both market_id and vendor_id are required', 400)
-      return
-    end
-  
-    market_vendor = MarketVendor.find_by(vendor_id: vendor_id, market_id: market_id)
-  
-    unless market_vendor
-      render_error("No MarketVendor with market_id=#{market_id} AND vendor_id=#{vendor_id} exists", 404)
-      return
-    end
-  
-    if market_vendor.destroy
-      render_success('', 204)
-      return
+    market_vendor = MarketVendor.find_by(vendor_id: params[:vendor_id], market_id: params[:market_id])
+
+    if market_vendor
+      if market_vendor.destroy
+        render_success('', 204)
+      else
+        render_error('Failed to destroy MarketVendor', 500)
+      end
     else
-      render_error('Failed to destroy MarketVendor', 500)
-      return
+      render_error("No MarketVendor with market_id=#{params[:market_id]} AND vendor_id=#{params[:vendor_id]} exists", 404)
     end
   end
 
   private
+  def not_found_response(exception)
+    render json: ErrorSerializer.new(ErrorMessage.new(exception.message, 404))
+      .serialize_json, status: :not_found
+  end
+
+  def validate_parameters
+    unless params[:market_id].present? && params[:vendor_id].present?
+      render_error('Both market_id and vendor_id are required', 400)
+    end
+  end
+
   def render_error(message, status)
     render json: { errors: [{detail: message }] }, status: status
   end

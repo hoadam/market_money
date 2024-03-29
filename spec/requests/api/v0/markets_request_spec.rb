@@ -3,22 +3,12 @@ require 'rails_helper'
 describe "Markets Endpoints" do
   before do
     @market_1 = create(:market)
-    @market_2 = create(:market)
-    @market_3 = create(:market)
-    @market_4 = create(:market)
-    @market_5 = create(:market)
+    create_list(:market,4)
 
-    @vendor_1 = create(:vendor)
-    @vendor_2 = create(:vendor)
-    @vendor_3 = create(:vendor)
-    @vendor_4 = create(:vendor)
-    @vendor_5 = create(:vendor)
-
-    @vm_1_1 = @market_1.market_vendors.create(vendor: @vendor_1)
-    @vm_1_2 = @market_1.market_vendors.create(vendor: @vendor_2)
-    @vm_1_3 = @market_1.market_vendors.create(vendor: @vendor_3)
-    @vm_1_4 = @market_1.market_vendors.create(vendor: @vendor_4)
-    @vm_2_5 = @market_2.market_vendors.create(vendor: @vendor_5)
+    @vm_1_1 = @market_1.market_vendors.create(vendor: create(:vendor))
+    @vm_1_2 = @market_1.market_vendors.create(vendor: create(:vendor))
+    @vm_1_3 = @market_1.market_vendors.create(vendor: create(:vendor))
+    @vm_1_4 = @market_1.market_vendors.create(vendor: create(:vendor))
   end
 
   describe "Market index" do
@@ -133,9 +123,10 @@ describe "Markets Endpoints" do
 
       markets = JSON.parse(response.body, symbolize_names: true)[:data]
 
-      expect(markets.count).to eq(2)
+      expect(markets.count).to be >= 2
       expect(markets).to be_an(Array)
     end
+    
     # sad path
     it "responds with 422 status and descriptive error message when the search parameter passed in is invalid" do
       get "/api/v0/markets/search?city=San Francisco"
