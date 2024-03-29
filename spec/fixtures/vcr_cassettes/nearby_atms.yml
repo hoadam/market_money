@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.tomtom.com/search/2/nearbySearch/.json?categorySet=7397&key=4QlfGltxA6YAiZ5C6oNyTRvCcWGjJ4yZ&lat=37.7955&lon=-122.3933&relatedPois=off&view=Unified
+    uri: https://api.tomtom.com/search/2/nearbySearch/.json?categorySet=7397&key=4QlfGltxA6YAiZ5C6oNyTRvCcWGjJ4yZ&lat=37.7955&lon=-122.3933
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 28 Mar 2024 20:10:01 GMT
+      - Fri, 29 Mar 2024 03:58:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Vary:
@@ -27,7 +27,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Tracking-Id:
-      - 7d1f1640-c971-494a-b656-611b979fc8e0
+      - b07872cd-cbee-4cb7-ab75-f7c1d1c5bf82
       Access-Control-Expose-Headers:
       - Tracking-ID
       Server:
@@ -35,16 +35,16 @@ http_interactions:
       X-Tomtom-Processed-By:
       - westus2
       X-Tomtom-Message-Id:
-      - 12815b97-ea3a-43f1-ba8a-4bd0f170eb1c
+      - d5b20f45-d06a-4323-b8b1-9f7213185cbe
       X-Tomtom-Upstream-Service-Time:
-      - '73'
+      - '108'
       X-Tomtom-Attempt-Count:
       - '1'
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '{"summary":{"queryType":"NEARBY","queryTime":48,"numResults":10,"offset":0,"totalResults":100,"fuzzyLevel":1,"geoBias":{"lat":37.7955,"lon":-122.3933}},"results":[{"type":"POI","id":"WV13fIeWWdl5R1i1Lx3Kjw","score":99.9515914917,"dist":48.412078,"info":"search:ta:840069009207678-US","poi":{"name":"Bank
+      string: '{"summary":{"queryType":"NEARBY","queryTime":89,"numResults":10,"offset":0,"totalResults":100,"fuzzyLevel":1,"geoBias":{"lat":37.7955,"lon":-122.3933}},"results":[{"type":"POI","id":"WV13fIeWWdl5R1i1Lx3Kjw","score":99.9515914917,"dist":48.412078,"info":"search:ta:840069009207678-US","poi":{"name":"Bank
         of America","brands":[{"name":"Bank of America"}],"categorySet":[{"id":7397}],"url":"www.bankofamerica.com/","categories":["cash
         dispenser"],"classifications":[{"code":"CASH_DISPENSER","names":[{"nameLocale":"en-US","name":"cash
         dispenser"}]}]},"address":{"streetNumber":"1","streetName":"The Embarcadero","municipality":"San
@@ -107,5 +107,5 @@ http_interactions:
         Francisco","countrySubdivision":"CA","countrySubdivisionName":"California","countrySubdivisionCode":"CA","postalCode":"94111","extendedPostalCode":"94111-4805","countryCode":"US","country":"United
         States","countryCodeISO3":"USA","freeformAddress":"43 Drumm Street, San Francisco,
         CA 94111","localName":"San Francisco"},"position":{"lat":37.794267,"lon":-122.396699},"viewport":{"topLeftPoint":{"lat":37.79517,"lon":-122.39784},"btmRightPoint":{"lat":37.79337,"lon":-122.39556}},"entryPoints":[{"type":"main","position":{"lat":37.79428,"lon":-122.39659}}]}]}'
-  recorded_at: Thu, 28 Mar 2024 20:10:01 GMT
+  recorded_at: Fri, 29 Mar 2024 03:58:08 GMT
 recorded_with: VCR 6.2.0
